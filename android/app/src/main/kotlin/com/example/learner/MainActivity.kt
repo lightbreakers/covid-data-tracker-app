@@ -1,4 +1,4 @@
-package com.example.covid-data-tracker-app
+package com.example.covid_data_tracker_app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Dailog extends StatelessWidget {
-  // const Dailog({Key key}) : super(key: key);
-  final List<Map> countryData;
-  Dailog(this.countryData);
+class DailogBox extends StatelessWidget {
+  final Map countryData;
+  final BuildContext context;
+  DailogBox(this.context,this.countryData,);
+  
+  // const DailogBox({Key key}) : super(key: key);
+  // const DailogBox({Map countryData}) : super(countryData: countryData);
+
+
   @override
   Widget build(BuildContext context) {
+    ThemeData localTheme = Theme.of(context);
+    final String photoUrl = "icons/flags/png/2.5x/" +
+        countryData["CountryCode"].toLowerCase() +
+        ".png";
     return SimpleDialog(
       children: <Widget>[
         Padding(
@@ -72,7 +81,3 @@ class Dailog extends StatelessWidget {
     );
   }
 }
-
-
-
-

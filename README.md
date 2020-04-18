@@ -1,4 +1,4 @@
-# covid-data-tracker-app
+# covid_data_tracker_app
 
 A new Flutter application. to learn basic of flutter
 
