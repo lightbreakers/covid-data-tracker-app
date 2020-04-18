@@ -6,6 +6,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'dart:convert';
 import './failed.dart';
 import './mainList.dart';
+import 'textData.dart';
 
 void main() => runApp(MyApp());
 
@@ -120,11 +121,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("COVID"),
+        title: Text("Covid-19",
+                          style: TextStyle(color: Colors.red, fontSize: 20,fontWeight: FontWeight.w400)),
+        // backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
+        bottomOpacity: 1.0,
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search,color: Colors.red,),
             onPressed: () async {
               var val = await showSearch(
                   context: context, delegate: CountrySearch(countryData));
@@ -138,8 +143,8 @@ class _MyHomePageState extends State<MyHomePage> {
               });
               // itemScrollController.scrollTo(
               // index: x,
-              // duration: Duration(seconds: 4),
-              // curve: Curves.easeIn);
+              // duration: Duration(seconds: 2),
+              // curve: Curves.decelerate);
               itemScrollController.jumpTo(
                 index: x,
               );
@@ -195,19 +200,84 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildItem(BuildContext context, int index) {
     if (index == 0) {
-      return Container(
-        margin: EdgeInsets.all(4),
-        child: Center(
-          child: Text(
-            "Latest Data",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      );
+      return Column(          
+                children: <Widget>[
+                      AnimatedContainer(
+                        curve: Curves.easeIn,
+                        duration: Duration(seconds: 1),
+                        padding: EdgeInsets.all(14),
+                        margin: EdgeInsets.all(4),
+                      //    decoration: BoxDecoration(
+                      //       color: Colors.white,
+                      //       borderRadius: BorderRadius.circular(25),
+                      //       border: Border.all(
+                      //         color: Color(0xFFE5E5E5),
+                      //         // color: Colors.redAccent,
+                      //       ),
+                      //       boxShadow: [BoxShadow(
+                      //         offset: Offset(0, 1.5),
+                      //         blurRadius: 2,
+                      //         // color: Colors.purple,
+                      //         // color: Colors.black38,
+                      //       ),]
+                      // ),
+                          child: Text("Worldwide",
+                          style: TextStyle(color: Colors.black, fontSize: 36 ,fontWeight: FontWeight.w200)),
+                        ),
+                  // Divider(thickness: 1.0, color: Colors.black54,indent: 25.0,endIndent: 25.0,),
+                  // SizedBox(height: 4.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                        Container(
+                          // margin: EdgeInsets.only(left: 16.0),
+                          padding: const EdgeInsets.all(4),
+                          child: Column(children: [
+                            TextData( "NewConfirmed",
+                                globalData['NewConfirmed']),
+                            TextData( "NewDeaths",
+                                globalData['NewDeaths']),
+                            TextData( "NewRecovered",
+                                globalData['NewRecovered']),
+                          ]),
+                          color: Colors.transparent,
+                          // width: MediaQuery.of(context).size.width,
+                        ),
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        child: Column(children: [
+                          TextData( "TotalConfirmed",
+                              globalData['TotalConfirmed']),
+                          TextData( "TotalDeaths",
+                             globalData['TotalDeaths']),
+                          TextData( "TotalRecovered",
+                              globalData['TotalRecovered']),
+                        ]),
+                        // color: Color.fromRGBO(0, 0, 0, 0),
+                        // width: MediaQuery.of(context).size.width,
+                      ),
+                    ],
+                  ),
+                ],        
+        );
     }
+      
+      
+    //   Container(
+    //     margin: EdgeInsets.all(4),
+    //     child: Container(
+    //       child: Center(
+    //         child: Text(
+    //           "Latest Data",
+    //           style: TextStyle(
+    //             fontSize: 22,
+    //             // fontWeight: FontWeight.bold,
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
     return MainList(context,countryData,index);
   }
 }

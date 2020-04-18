@@ -20,53 +20,72 @@ class MainList extends StatelessWidget {
               context: context,
               builder: (context) => DailogBox(context, countryData[index]),
             ),
-        child: Padding(
+        child: Container(
           key: Key(countryData[index]['Country']),
-          padding: const EdgeInsets.all(8.0),
+
+          // color: Colors.red,
+          padding: const EdgeInsets.all(4.0),
+          margin: EdgeInsets.all(4),
+          // decoration: BoxDecoration(
+          //       color: Colors.white,
+          //       borderRadius: BorderRadius.circular(25),
+          //       border: Border.all(
+          //         color: Color(0xFFE5E5E5),
+          //         // color: Colors.redAccent,
+          //       ),
+          //       boxShadow: [BoxShadow(
+          //         offset: Offset(0, 1.5),
+          //         blurRadius: 2,
+          //         // color: Colors.purple,
+          //         // color: Colors.black38,
+          //       ),]
+          // ),
           child: new ExpansionTile(
-              // backgroundColor: Colors.purple[300],
-              // initiallyExpanded:opentile?true:false,
-              leading: Imagebox(photoUrl: photoUrl,),
-              title: Text(
-                countryData[index]['Country'].toString(),
-                style: Theme.of(context).textTheme.title,
-              ),
-              children: <Widget>[
-                Divider(thickness: 1.0, color: Colors.black54,indent: 30.0,endIndent: 30.0,),
-                // SizedBox(height: 4.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      // margin: EdgeInsets.only(left: 16.0),
-                      padding: const EdgeInsets.all(8),
-                      child: Column(children: [
-                        TextData( "NewConfirmed",
-                            countryData[index]['NewConfirmed']),
-                        TextData( "NewDeaths",
-                            countryData[index]['NewDeaths']),
-                        TextData( "NewRecovered",
-                            countryData[index]['NewRecovered']),
-                      ]),
-                      // color: Colors.blueAccent,
-                      // width: MediaQuery.of(context).size.width,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      child: Column(children: [
-                        TextData( "TotalConfirmed",
-                            countryData[index]['TotalConfirmed']),
-                        TextData( "TotalDeaths",
-                            countryData[index]['TotalDeaths']),
-                        TextData( "TotalRecovered",
-                            countryData[index]['TotalRecovered']),
-                      ]),
-                      // color: Colors.redAccent,
-                      // width: MediaQuery.of(context).size.width,
-                    ),
-                  ],
+                // backgroundColor: Colors.purple[300],
+                // initiallyExpanded:opentile?true:false,
+                leading: Imagebox(photoUrl: photoUrl,),
+                title: Text(
+                  countryData[index]['Country'].toString(),
+                  style: TextStyle(color: Colors.black,fontSize: 24,fontWeight: FontWeight.w300),
+                  // style: Theme.of(context).textTheme.title,
                 ),
-              ]),
+                children: <Widget>[
+                  Divider(thickness: 1.0, color: Colors.black54,indent: 25.0,endIndent: 25.0,),
+                  // SizedBox(height: 4.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                        Container(
+                          // margin: EdgeInsets.only(left: 16.0),
+                          padding: const EdgeInsets.all(4),
+                          child: Column(children: [
+                            TextData( "NewConfirmed",
+                                countryData[index]['NewConfirmed']),
+                            TextData( "NewDeaths",
+                                countryData[index]['NewDeaths']),
+                            TextData( "NewRecovered",
+                                countryData[index]['NewRecovered']),
+                          ]),
+                          color: Colors.transparent,
+                          // width: MediaQuery.of(context).size.width,
+                        ),
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        child: Column(children: [
+                          TextData( "TotalConfirmed",
+                              countryData[index]['TotalConfirmed']),
+                          TextData( "TotalDeaths",
+                              countryData[index]['TotalDeaths']),
+                          TextData( "TotalRecovered",
+                              countryData[index]['TotalRecovered']),
+                        ]),
+                        // color: Color.fromRGBO(0, 0, 0, 0),
+                        // width: MediaQuery.of(context).size.width,
+                      ),
+                    ],
+                  ),
+                ],
+                ),
         ));
   }
 }

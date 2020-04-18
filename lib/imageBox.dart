@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Imagebox extends StatelessWidget {
   // const Imagebox({Key key}) : super(key: key);
@@ -9,8 +9,7 @@ class Imagebox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return (BuildContext context, String photoUrl) {
-    return ClipRRect( 
+    return ClipRRect(
       borderRadius: BorderRadius.circular(4.0),
       child: Image.asset(
         photoUrl,
