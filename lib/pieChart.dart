@@ -126,8 +126,8 @@ class PieChart2State extends State<PieChartSample2> {
                   height: 2,
                 ),
                 Indicator(
-                  color: Colors.orange,
-                  text: 'Confirmed',
+                  color: Colors.blue,
+                  text: 'Active',
                   isSquare: false,
                 ),
                 SizedBox(
@@ -186,7 +186,7 @@ class PieChart2State extends State<PieChartSample2> {
           );
         case 2:
           return PieChartSectionData(
-            color: Colors.orange,
+            color: Colors.blue,
             value: stillConfPer.toDouble(),
             title: stillConfPer.toString() + '%',
             radius: radius,
